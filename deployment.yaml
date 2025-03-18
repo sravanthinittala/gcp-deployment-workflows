@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: langchain-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: langchain-app
+    spec:
+      containers:
+      - name: langchain-container
+        image: us-docker.pkg.dev/{env.PROJECT_ID}/images/test-app:v1 .
+        ports:
+        - containerPort: 80
+        env:
+        - name: GOOGLE_API_KEY
+          value: {secrets.GOOGLE_API_KEY}
