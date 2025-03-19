@@ -46,8 +46,17 @@ jobs:
           gcloud auth configure-docker us-east1-docker.pkg.dev
       
       - name: Build image
-        run: docker build . --file ./Dockerfile --tag us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app
+        run: docker build . --file ./Dockerfile --tag us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app1
         working-directory: .
       
       - name: Docker push
-        run: docker push us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app
+        run: docker push us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app1
+      
+      - name: Deploy
+        run: |-
+          kubectl apply -f ./deployment.yaml
+          kubectl apply -f ./service.yaml
+      
+      - name: Test
+        run: kubectl get pods
+      
