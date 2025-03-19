@@ -46,7 +46,7 @@ jobs:
           gcloud auth configure-docker us-east1-docker.pkg.dev
       
       - name: Build image
-        run: docker build . --file . --tag us-east1-docker.pkg.dev/linkedlens-452503/test-repo
+        run: docker build . --file ./Dockerfile --tag us-east1-docker.pkg.dev/linkedlens-452503/test-repo
         working-directory: .
       
       - name: Docker push
