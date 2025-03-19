@@ -32,5 +32,22 @@ jobs:
           cluster_name: 'test-cluster'
           location: 'us-east1'
       
-      - id: 'get-ods'
+      - id: 'get-pods'
         run: 'kubectl get pods'
+
+      - name: 'Setup Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: 'Use gcloud cli'
+        run: 'gcloud info'
+      
+      - name: 'Docker auth'
+        run: |-
+          gcloud auth configure-docker us-east1-docker.pkg.dev
+      
+      - name: Build image
+        run: docker build . --file . --tag us-east1-docker.pkg.dev/linkedlens-452503/test-repo
+        working-directory: .
+      
+      - name: Docker push
+        run: docker push us-east1-docker.pkg.dev/linkedlens-452503/test-repo
