@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: langchain-app
+        tier: backend
     spec:
       containers:
       - name: langchain-container
