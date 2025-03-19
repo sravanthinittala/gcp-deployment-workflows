@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: langchain-container
-        image: us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app1 .
+        image: us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app
         ports:
         - containerPort: 80
         env:
         - name: GOOGLE_API_KEY
-          value: {secrets.GOOGLE_API_KEY}
+          value: ${{secrets.GOOGLE_API_KEY}}
