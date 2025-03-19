@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: langchain-container
-        image: us-docker.pkg.dev/{env.PROJECT_ID}/images/test-app:v1 .
+        image: us-east1-docker.pkg.dev/linkedlens-452503/test-repo/langchain-app1 .
         ports:
         - containerPort: 80
         env:
