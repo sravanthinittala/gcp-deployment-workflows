@@ -23,7 +23,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           project_id: 'linkedlens-452503'
-          workload_identity_provider: 'projects/57295351120/locations/global/workloadIdentityPools/github-actions/subject/repo:sravanthinittala/gcp-deployment-workflows:ref:refs/heads/main/'
+          workload_identity_provider: 'projects/57295351120/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc'
           service_account: ${{secrets.SERVICE_ACCOUNT}}
       
       - id: 'get-credentials'
